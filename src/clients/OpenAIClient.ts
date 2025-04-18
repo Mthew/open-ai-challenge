@@ -1,6 +1,6 @@
 import axios from "axios";
 import { config } from "../config/config";
-import { ExcutionMode, Problem } from "../types";
+import { ExcutionMode, Problem, SubmitResponse } from "../types";
 
 export class OpenAIClient {
   private readonly baseUrl: string;
@@ -20,7 +20,7 @@ export class OpenAIClient {
     try {
       let apiUrl =
         this.executionMode === "prod"
-          ? `${this.baseUrl}/challenge/-s-t-a-r-t`
+          ? `${this.baseUrl}/challenge/start`
           : `${this.baseUrl}/challenge/test`;
 
       const response = await axios.get(apiUrl, {
@@ -41,7 +41,10 @@ export class OpenAIClient {
    * @param answer The calculated answer
    * @returns The next problem or completion status
    */
-  async submitSolution(problemId: string, answer: number): Promise<Problem> {
+  async submitSolution(
+    problemId: string,
+    answer: number
+  ): Promise<SubmitResponse> {
     try {
       const response = await axios.post(
         `${this.baseUrl}/challenge/solution`,

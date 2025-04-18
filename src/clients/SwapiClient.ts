@@ -22,7 +22,7 @@ export class SwapiClient {
   async searchCharacter(name: string): Promise<SwapiCharacter> {
     try {
       const response = await axios.get(`${this.baseUrl}/people`, {
-        params: { search: "Calrissian" },
+        params: { search: name },
         httpsAgent: agent,
       });
 
@@ -34,7 +34,7 @@ export class SwapiClient {
       // Return the first match
       return results[0];
     } catch (error) {
-      console.error(`Error searching for character ${name}:`, error);
+      //console.error(`Error searching for character ${name}:`, error);
       throw new Error(`Failed to find character: ${name}`);
     }
   }
@@ -59,7 +59,7 @@ export class SwapiClient {
       // Return the first match
       return results[0];
     } catch (error) {
-      console.error(`Error searching for planet ${name}:`, error);
+      //console.error(`Error searching for planet ${name}:`, error);
       throw new Error(`Failed to find planet: ${name}`);
     }
   }

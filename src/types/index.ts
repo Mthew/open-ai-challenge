@@ -6,6 +6,13 @@ export interface Problem {
   problem: string;
 }
 
+export interface SubmitResponse {
+  message: string;
+  correct: number;
+  incorrect: number;
+  next_problem: Problem;
+}
+
 export interface AiResponse {
   entities_attributes: {
     [entity: string]: string[];

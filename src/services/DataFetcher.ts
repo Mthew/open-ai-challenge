@@ -26,12 +26,7 @@ export class DataFetcher {
     const fetchPromises: Promise<void>[] = [];
 
     for (const [entity, attributes] of Object.entries(entities)) {
-      console.log(
-        `Start the search with ${entity} character with attributes ${attributes}`
-      );
       for (const attribute of attributes) {
-        console.log(`destructuring of atributte ${attribute} character`);
-
         const cacheKey = `${entity}.${attribute}`;
         // Check cache first
         const cachedValue = this.cache.get<number>(cacheKey);

@@ -23,7 +23,7 @@ export class PokeApiClient {
       );
       return response.data;
     } catch (error) {
-      console.error(`Error finding Pokémon ${name}:`, error);
+      //console.error(`Error finding Pokémon ${name}:`, error);
       throw new Error(`Failed to find Pokémon: ${name}`);
     }
   }
